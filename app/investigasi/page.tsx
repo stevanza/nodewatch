@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import Sidebar from '../../components/layout/sidebar';
+import Sidebar from '../../components/p/sidebar';
 import { 
   Search, 
   Copy, 
