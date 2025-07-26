@@ -136,7 +136,7 @@ const VulnerabilityItem: React.FC<VulnerabilityItemProps> = ({ vulnerability }) 
 };
 
 // Komponen utama halaman Audit
-const AuditPage: React.FC = () => {
+export default function AuditPage() {
   const [contractAddress, setContractAddress] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -211,23 +211,10 @@ const AuditPage: React.FC = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 3000)); // Simulasi delay 3 detik
       setAuditResult(mockAuditResult);
-    } catch (err) {
+    } catch {
       setError('Terjadi kesalahan saat melakukan audit. Silakan coba lagi.');
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  const getRiskLevelColor = (riskLevel: string) => {
-    switch (riskLevel) {
-      case 'low':
-        return 'text-green-400';
-      case 'medium':
-        return 'text-amber-400';
-      case 'high':
-        return 'text-red-400';
-      default:
-        return 'text-slate-400';
     }
   };
 
@@ -453,6 +440,4 @@ const AuditPage: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default AuditPage;
+}

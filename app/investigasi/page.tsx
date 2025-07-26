@@ -2,7 +2,7 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import Sidebar from '../../components/Layout/sidebar';
+import Sidebar from '../../components/layout/sidebar';
 import { 
   Search, 
   Copy, 
@@ -10,14 +10,9 @@ import {
   Maximize2, 
   Eye, 
   EyeOff,
-  AlertTriangle,
-  Shield,
-  Clock,
   DollarSign,
   Hash,
-  Calendar,
-  ChevronDown,
-  Info
+  Calendar
 } from 'lucide-react';
 import ReactFlow, {
   MiniMap,
@@ -30,8 +25,7 @@ import ReactFlow, {
   Edge,
   BackgroundVariant,
   Node,
-  NodeChange,
-  EdgeChange
+  MarkerType
 } from 'reactflow';
 
 import 'reactflow/dist/style.css';
@@ -266,7 +260,7 @@ const initialEdges: Edge[] = [
     target: '2', 
     animated: true,
     style: { stroke: '#ef4444', strokeWidth: 2 },
-    markerEnd: { type: 'arrowclosed', color: '#ef4444' }
+    markerEnd: { type: MarkerType.ArrowClosed, color: '#ef4444' }
   },
   { 
     id: 'e1-3', 
@@ -274,36 +268,36 @@ const initialEdges: Edge[] = [
     target: '3', 
     animated: true,
     style: { stroke: '#ef4444', strokeWidth: 3 },
-    markerEnd: { type: 'arrowclosed', color: '#ef4444' }
+    markerEnd: { type: MarkerType.ArrowClosed, color: '#ef4444' }
   },
   { 
     id: 'e2-4', 
     source: '2', 
     target: '4',
     style: { stroke: '#f59e0b', strokeWidth: 1 },
-    markerEnd: { type: 'arrowclosed', color: '#f59e0b' }
+    markerEnd: { type: MarkerType.ArrowClosed, color: '#f59e0b' }
   },
   { 
     id: 'e3-5', 
     source: '3', 
     target: '5',
     style: { stroke: '#10b981', strokeWidth: 1 },
-    markerEnd: { type: 'arrowclosed', color: '#10b981' }
+    markerEnd: { type: MarkerType.ArrowClosed, color: '#10b981' }
   },
   { 
     id: 'e3-6', 
     source: '3', 
     target: '6',
     style: { stroke: '#f59e0b', strokeWidth: 2 },
-    markerEnd: { type: 'arrowclosed', color: '#f59e0b' }
+    markerEnd: { type: MarkerType.ArrowClosed, color: '#f59e0b' }
   }
 ];
 
 // Komponen utama halaman Investigasi
 export default function InvestigasiPage() {
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+  const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
-  const [selectedEntity, setSelectedEntity] = useState<EntityData>(mockEntityData);
+  const [selectedEntity] = useState<EntityData>(mockEntityData);
   const [selectedNode, setSelectedNode] = useState<Node<NodeData> | null>(null);
   const [showLabels, setShowLabels] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
@@ -336,15 +330,6 @@ export default function InvestigasiPage() {
   const fitView = () => {
     // React Flow fit view function
     console.log('Fit to view');
-  };
-
-  const getRiskColor = (level: string) => {
-    switch (level) {
-      case 'low': return 'text-green-400';
-      case 'medium': return 'text-amber-400';
-      case 'high': return 'text-red-400';
-      default: return 'text-slate-400';
-    }
   };
 
   const getRiskText = (level: string) => {

@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import Sidebar from '../../components/Layout/sidebar';
+import Sidebar from '../../components/layout/sidebar';
 import { Bell, AlertTriangle, Shield, Activity, Zap, Clock } from 'lucide-react';
 
 export default function PeringatanPage() {

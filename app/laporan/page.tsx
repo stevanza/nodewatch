@@ -9,7 +9,6 @@ import {
   Calendar, 
   Filter,
   TrendingUp,
-  TrendingDown,
   BarChart3,
   Activity,
   Users,
@@ -165,12 +164,20 @@ export default function OraclePage() {
   ];
 
   // Custom tooltip untuk grafik
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label }: {
+    active?: boolean;
+    payload?: Array<{
+      name: string;
+      value: number;
+      color: string;
+    }>;
+    label?: string;
+  }) => {
     if (active && payload && payload.length) {
       return (
         <div className="bg-slate-900 border border-slate-600 rounded-lg p-3 shadow-lg">
           <p className="text-slate-300 text-sm mb-2">{`Tanggal: ${label}`}</p>
-          {payload.map((entry: any, index: number) => (
+          {payload.map((entry, index: number) => (
             <p key={index} className="text-sm" style={{ color: entry.color }}>
               {`${entry.name}: ${entry.value.toLocaleString()}`}
             </p>
@@ -448,7 +455,7 @@ export default function OraclePage() {
                       width={100}
                     />
                     <Tooltip 
-                      formatter={(value: any, name: any) => [formatCurrency(value), 'Volume']}
+                      formatter={(value: number) => [formatCurrency(value), 'Volume']}
                       labelStyle={{ color: '#E5E7EB' }}
                     />
                     <Bar 
