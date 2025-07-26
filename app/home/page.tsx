@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import Sidebar from '../../components/p/sidebar';
+import Sidebar from '../../components/layout/sidebar';
 import { 
   Search, 
   Shield, 
