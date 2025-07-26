@@ -2,7 +2,7 @@
 'use client';
 
 import React from 'react';
-import Sidebar from '../../components/layout/sidebar';
+import Sidebar from '../../components/Layout/sidebar';
 import { 
   Search, 
   Shield, 
@@ -66,7 +66,7 @@ const MiniCard: React.FC<MiniCardProps> = ({ icon, title, value, change, changeT
 };
 
 // Komponen utama halaman homepage
-const HomePage: React.FC = () => {
+export default function HomePage() {
   // Data placeholder untuk widget risiko
   const riskMetrics = [
     { value: '3', label: 'Entitas Berisiko Tinggi Baru', color: 'text-red-400' },
@@ -408,6 +408,4 @@ const HomePage: React.FC = () => {
       </div>
     </div>
   );
-};
-
-export default HomePage;
+}

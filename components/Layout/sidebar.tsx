@@ -1,4 +1,4 @@
-// components/layout/sidebar.tsx
+// components/Layout/sidebar.tsx
 'use client';
 
 import React from 'react';
@@ -76,7 +76,7 @@ const Sidebar: React.FC<SidebarProps> = ({ className = '' }) => {
           </div>
           {/* Nama Aplikasi */}
           <div>
-            <h1 className="text-xl font-bold text-white">NodeWatch</h1>
+            <h1 className="text-xl font-bold text-white">Intel Hub</h1>
             <p className="text-xs text-slate-400">Command Center</p>
           </div>
         </Link>
